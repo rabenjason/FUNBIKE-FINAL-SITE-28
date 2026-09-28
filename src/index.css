@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-fb-yellow: #ffd100;
+  --color-fb-paper: #ffffff;
+  --color-fb-ink: #171816;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
+}
+
+:root {
+  color-scheme: light;
+  font-family: "DM Sans", sans-serif;
+  background: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root.dark {
+  color-scheme: dark;
+  background: #141513;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-color: #ffd100 #ffffff;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: #ffffff;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.875rem, 0.82rem + 0.25vw, 1rem);
+  line-height: 1.55;
+}
+
+/* Fluid typography scale: adapts smoothly to every screen width & form factor */
+.fluid-hero {
+  font-size: clamp(2.15rem, 1.35rem + 4.2vw, 4.75rem);
+  line-height: 0.97;
+  letter-spacing: -0.06em;
+}
+
+.fluid-h1 {
+  font-size: clamp(1.9rem, 1.3rem + 3vw, 3.85rem);
+  line-height: 0.99;
+  letter-spacing: -0.06em;
+}
+
+.fluid-h2 {
+  font-size: clamp(1.5rem, 1.15rem + 1.8vw, 2.65rem);
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+}
+
+.fluid-h3 {
+  font-size: clamp(1.08rem, 0.96rem + 0.55vw, 1.38rem);
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+}
+
+.fluid-body {
+  font-size: clamp(0.84rem, 0.79rem + 0.25vw, 1rem);
+  line-height: 1.6;
+}
+
+.fluid-eyebrow {
+  font-size: clamp(0.62rem, 0.58rem + 0.16vw, 0.74rem);
+  letter-spacing: 0.18em;
+}
+
+.fluid-btn {
+  font-size: clamp(0.66rem, 0.61rem + 0.18vw, 0.76rem);
+  letter-spacing: 0.12em;
+}
+
+.dark body {
+  background: #141513;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #ffd100;
+  outline-offset: 3px;
+}
+
+::selection {
+  color: #171816;
+  background: #ffd100;
+}
+
+.glass-header {
+  background: rgb(255 255 255 / 0.72);
+  -webkit-backdrop-filter: blur(22px) saturate(165%);
+  backdrop-filter: blur(22px) saturate(165%);
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.7), 0 10px 35px rgb(25 25 20 / 0.04);
+}
+
+.dark .glass-header {
+  background: rgb(20 21 19 / 0.72);
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.08), 0 10px 35px rgb(0 0 0 / 0.12);
+}
+
+.glass-panel {
+  border: 1px solid rgb(255 255 255 / 0.8);
+  background: rgb(255 255 255 / 0.62);
+  -webkit-backdrop-filter: blur(22px) saturate(155%);
+  backdrop-filter: blur(22px) saturate(155%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.85), 0 12px 36px rgb(31 30 22 / 0.08);
+}
+
+.dark .glass-panel {
+  border-color: rgb(255 255 255 / 0.18);
+  background: rgb(35 36 32 / 0.62);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.12), 0 12px 36px rgb(0 0 0 / 0.2);
+}
+
+/* Logos: always visible in both light & dark modes without any box */
+.logo-clean {
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.18));
+}
+
+.dark .logo-clean {
+  filter: brightness(1.12) contrast(1.05) drop-shadow(0 0 10px rgb(255 255 255 / 0.35))
+    drop-shadow(0 1px 3px rgb(0 0 0 / 0.65));
+}
+
+.partner-logo {
+  mix-blend-mode: multiply;
+}
+
+.dark .partner-logo {
+  mix-blend-mode: normal;
+  filter: drop-shadow(0 0 8px rgb(255 255 255 / 0.45));
+}
+
+/* Skeleton placeholders */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: rgb(23 24 22 / 0.07);
+}
+
+.dark .skeleton {
+  background: rgb(255 255 255 / 0.07);
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.6), transparent);
+  animation: fb-shimmer 1.25s ease-in-out infinite;
+}
+
+.dark .skeleton::after {
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.08), transparent);
+}
+
+@keyframes fb-shimmer {
+  100% { transform: translateX(100%); }
+}
+
+.hero-glass-sheet {
+  position: absolute;
+  z-index: 1;
+  inset: 0 auto 0 0;
+  width: 100%;
+  border-right: 1px solid rgb(255 255 255 / 0.25);
+  background: rgb(16 17 15 / 0.15);
+  -webkit-backdrop-filter: blur(2px) saturate(125%);
+  backdrop-filter: blur(2px) saturate(125%);
+}
+
+@media (min-width: 1024px) {
+  .hero-glass-sheet {
+    width: 62%;
+    background: linear-gradient(90deg, rgb(16 17 15 / 0.30) 0%, rgb(16 17 15 / 0.24) 76%, transparent 100%);
+    -webkit-backdrop-filter: blur(10px) saturate(135%);
+    backdrop-filter: blur(10px) saturate(135%);
+  }
+}
+
+@keyframes fb-tail {
+  0%, 100% { transform: rotate(-12deg); }
+  50% { transform: rotate(22deg); }
+}
+.animate-fb-tail { animation: fb-tail 1.4s ease-in-out infinite; transform-origin: 0% 100%; }
+
+@keyframes fb-blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.08); }
+}
+.animate-fb-blink { animation: fb-blink 4s ease-in-out infinite; transform-origin: center; }
+
+@keyframes fb-ear {
+  0%, 100% { transform: rotate(0deg); }
+  40% { transform: rotate(-8deg); }
+  60% { transform: rotate(5deg); }
+}
+.animate-fb-ear { animation: fb-ear 2.6s ease-in-out infinite; transform-origin: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
