@@ -10,7 +10,7 @@ export function BikeCard({ bike, go }: { bike: Bike; go: (p: string, id?: string
   const [active, setActive] = useState(0);
 
   const badge =
-    "inline-flex items-center border border-white/25 bg-black/35 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.18em] text-white backdrop-blur-sm";
+    "inline-flex items-center border border-black/15 bg-white/85 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.18em] text-[#171816] backdrop-blur-sm dark:border-white/25 dark:bg-black/35 dark:text-white";
 
   return (
     <motion.article
@@ -19,10 +19,10 @@ export function BikeCard({ bike, go }: { bike: Bike; go: (p: string, id?: string
       viewport={{ once: true, amount: 0.12 }}
       whileHover={{ y: -4 }}
       transition={{ duration: 0.35, ease: "easeOut" }}
-      className="group flex min-w-0 flex-col overflow-hidden border border-white/10 bg-[#171815] text-left shadow-[0_14px_40px_rgba(0,0,0,0.25)] transition-colors hover:border-[#ffd100]/70"
+      className="group flex min-w-0 flex-col overflow-hidden border border-black/10 bg-white text-left shadow-[0_14px_40px_rgba(0,0,0,0.08)] transition-colors hover:border-[#ffd100]/70 dark:border-white/10 dark:bg-[#171815] dark:shadow-[0_14px_40px_rgba(0,0,0,0.25)]"
     >
       {/* MEDIA — studio stage, full bike always visible */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-b from-[#2a2b27] via-[#1d1e1a] to-[#101110]">
+      <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-b from-white to-[#f5f4ef] dark:from-[#2a2b27] dark:via-[#1d1e1a] dark:to-[#101110]">
         <button
           type="button"
           onClick={() => go("product", bike.id)}
@@ -60,7 +60,9 @@ export function BikeCard({ bike, go }: { bike: Bike; go: (p: string, id?: string
                 <span
                   className={
                     "block h-[3px] transition-all " +
-                    (active === index ? "w-6 bg-white" : "w-1.5 bg-white/35 hover:bg-white/70")
+                    (active === index
+                      ? "w-6 bg-[#171816] dark:bg-white"
+                      : "w-1.5 bg-black/25 hover:bg-black/50 dark:bg-white/35 dark:hover:bg-white/70")
                   }
                 />
               </button>
@@ -70,29 +72,29 @@ export function BikeCard({ bike, go }: { bike: Bike; go: (p: string, id?: string
       </div>
 
       {/* INFO */}
-      <div className="flex flex-1 flex-col border-t border-white/10 p-4 sm:p-5">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/45">
+      <div className="flex flex-1 flex-col border-t border-black/10 p-4 sm:p-5 dark:border-white/10">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-black/45 dark:text-white/45">
           {bike.brand} · {bike.family}
         </p>
 
-        <h3 className="mt-2 font-display text-[clamp(1.25rem,1.05rem+0.7vw,1.6rem)] font-bold uppercase leading-[1.05] tracking-[-0.02em] text-white">
+        <h3 className="mt-2 font-display text-[clamp(1.25rem,1.05rem+0.7vw,1.6rem)] font-bold uppercase leading-[1.05] tracking-[-0.02em] text-[#171816] dark:text-white">
           {bike.name}
         </h3>
 
-        <p className="fluid-body mt-2.5 line-clamp-2 text-white/55">{bike.desc}</p>
+        <p className="fluid-body mt-2.5 line-clamp-2 text-black/55 dark:text-white/55">{bike.desc}</p>
 
         <div className="mt-5 flex items-center justify-between gap-3">
           <motion.button
             type="button"
             whileTap={{ scale: 0.96 }}
             onClick={() => go("product", bike.id)}
-            className="fluid-btn inline-flex min-h-10 items-center gap-2.5 border border-white/30 px-4 py-2.5 font-bold uppercase text-white transition hover:border-[#ffd100] hover:bg-[#ffd100] hover:text-[#171816]"
+            className="fluid-btn inline-flex min-h-10 items-center gap-2.5 border border-black/25 px-4 py-2.5 font-bold uppercase text-[#171816] transition hover:border-[#ffd100] hover:bg-[#ffd100] hover:text-[#171816] dark:border-white/30 dark:text-white"
           >
             Découvrir
             <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-[10px]" />
           </motion.button>
 
-          <span className="shrink-0 text-[10px] font-bold uppercase tracking-[0.14em] text-[#ffd100]">
+          <span className="shrink-0 text-[10px] font-bold uppercase tracking-[0.14em] text-[#98741b] dark:text-[#ffd100]">
             {bike.price}
           </span>
         </div>
